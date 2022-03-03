@@ -5,7 +5,7 @@ orbs:
 jobs:
   test:
     docker:
-      - image: cimg/python:3.10.2-node
+      - image: circleci/node
     steps:
       - checkout
       - run: npm install
@@ -13,8 +13,8 @@ jobs:
       - run: npm run lint
   deploy:
     docker:
-      - image: circleci/node
-    environment:
+      - image: cimg/python:3.10.2-node
+    environment: 
       AWS_REGION: eu-west-2
     steps:
       - checkout
